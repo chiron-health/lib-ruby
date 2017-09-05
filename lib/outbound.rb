@@ -28,7 +28,7 @@ module Outbound
     HEADERS = {
       'Content-type' => 'application/json',
       'X-Outbound-Client' => 'Ruby/' + Outbound::VERSION
-    }.freeze
+    }
   end
 
   def self.init(api_key, log_level = Logger::ERROR)
