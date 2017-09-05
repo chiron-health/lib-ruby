@@ -310,7 +310,7 @@ module Outbound
         headers = HEADERS
         headers['X-Outbound-Key'] = api_key
         payload = JSON.generate data
-        uri = URI("#{@base_url}#{path}")
+        uri = URI("#{Outbound::BASE_URL}#{path}")
 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = uri.scheme == 'https'
@@ -328,7 +328,7 @@ module Outbound
         err = status.to_s
         err << " - #{res.body}" unless res.body.empty?
       end
-      [err, true]
+      Result.new err, true
     end
 
     def user(info = {})
